@@ -2,11 +2,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './HomeScreen'
+import GroupsScreen from './GroupsScreen.js'
+import ProfileScreen from './ProfileScreen.js'
 
 const Stack = createNativeStackNavigator();
 
 const options={
-    title:"Main Menu",
     headerTintColor:"gold",
     headerStyle:{
         backgroundColor:"#800080"
@@ -20,8 +21,10 @@ const options={
 const Navigation=()=>{
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="HomeScreen">
-                <Stack.Screen options={options} name="HomeScreen" component={HomeScreen} />
+            <Stack.Navigator initialRouteName="Main Menu">
+                <Stack.Screen options={options} name="Main Menu" component={HomeScreen} />
+                <Stack.Screen options={options} name="Groups" component={GroupsScreen} />
+                <Stack.Screen options={options} name="Profile" component={ProfileScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )
