@@ -5,6 +5,7 @@ import screenDim from './ScreenDimensions';
 //import DropDownPicker from 'react-native-dropdown-picker';
 import SelectDropdown from 'react-native-select-dropdown'
 import CheckBox from 'react-native-check-box'
+import axios from 'axios'
 
 const ProfileScreen = ({ navigation }) => {
 
@@ -19,6 +20,10 @@ const ProfileScreen = ({ navigation }) => {
 
     const car = ["Has a car", "Doesn't have a car"]
     const diet = ["Omnivore", "Vegetarian", "Vegan", "Other"]
+
+    const handleClick=()=>{
+        //when server is ready put axios call here
+    }
 
     return (
         <View style={styles.Main}>
@@ -147,7 +152,7 @@ const ProfileScreen = ({ navigation }) => {
             </View>
             <View>
                 <TouchableOpacity style={{marginBottom:20}}>
-                    <Button title="Save Data"></Button>
+                    <Button onPress={handleClick} title="Save Data"></Button>
                 </TouchableOpacity>
             </View>
         </View>
