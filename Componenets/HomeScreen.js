@@ -8,6 +8,7 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.view}>
+            <Text style={styles.logo} >Sincon</Text>
             <TouchableOpacity onPress={() => { navigation.navigate("Groups") }} style={styles.Button}>
                 <Text style={styles.ButtonText} >Groups</Text>
             </TouchableOpacity>
@@ -24,6 +25,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#800080",
         alignItems: "center",
         justifyContent: "center"
+    },
+    logo:{
+        fontFamily: "BlackmoonQuest-PKq5g",
+        color:"gold",
+        fontSize:50
     },
     ButtonText:{
         color:"white",
