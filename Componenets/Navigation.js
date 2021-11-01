@@ -5,25 +5,31 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './HomeScreen'
 import GroupsScreen from './GroupsScreen.js'
 import ProfileScreen from './ProfileScreen.js'
+import LoginScreen from './LoginScreen.js'
+import LogOrSign from './LogOrSign';
+import Signup from './Signup';
 
 const Stack = createNativeStackNavigator();
 
-const options={
-    headerTintColor:"gold",
-    headerStyle:{
-        backgroundColor:"#800080"
+const options = {
+    headerTintColor: "gold",
+    headerStyle: {
+        backgroundColor: "#800080"
     },
-    headerShadowVisible:false,
-    headerTitleStyle:{
-        fontFamily:"BlackmoonQuest-PKq5g",
+    headerShadowVisible: false,
+    headerTitleStyle: {
+        fontFamily: "BlackmoonQuest-PKq5g",
     }
 }
 
-const Navigation=()=>{
-    return(
+const Navigation = () => {
+    return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main Menu">
-                <Stack.Screen options={{headerShown: false}} name="Main Menu" component={HomeScreen} />
+            <Stack.Navigator initialRouteName="LogOrSign">
+                <Stack.Screen options={{ headerShown: false }} name="LogOrSign" component={LogOrSign} />
+                <Stack.Screen options={options} name="Signup" component={Signup} />
+                <Stack.Screen options={options} name="Login" component={LoginScreen} />
+                <Stack.Screen options={{ headerShown: false }} name="Main Menu" component={HomeScreen} />
                 <Stack.Screen options={options} name="Groups" component={GroupsScreen} />
                 <Stack.Screen options={options} name="Profile" component={ProfileScreen} />
             </Stack.Navigator>
@@ -34,7 +40,7 @@ const Navigation=()=>{
 export default Navigation
 
 const styles = StyleSheet.create({
-    statusBar:{
+    statusBar: {
         backgroundColor: "#800080"
     }
 })
