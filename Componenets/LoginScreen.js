@@ -21,7 +21,7 @@ const LoginScreen=({navigation})=>{
                 console.log("i have a token")
                 console.log(data.data)
                 navigation.navigate("Main Menu", {
-                  name:name,
+                  user:name,
                   token: data.data,
                   from: 'Login'
                 });

@@ -8,6 +8,7 @@ import ProfileScreen from './ProfileScreen.js'
 import LoginScreen from './LoginScreen.js'
 import LogOrSign from './LogOrSign';
 import Signup from './Signup';
+import CreateGroup from './CreateGroup';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ const Navigation = () => {
                 <Stack.Screen options={{ headerShown: false }} name="Main Menu" component={HomeScreen} />
                 <Stack.Screen options={options} name="Groups" component={GroupsScreen} />
                 <Stack.Screen options={options} name="Profile" component={ProfileScreen} />
+                <Stack.Screen options={options} name="Creategroup" component={CreateGroup} />
             </Stack.Navigator>
         </NavigationContainer>
     )
