@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import screenDim from './ScreenDimensions';
@@ -7,10 +7,11 @@ import SelectDropdown from 'react-native-select-dropdown'
 import CheckBox from 'react-native-check-box'
 import axios from 'axios'
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = ({ route,navigation }) => {
 
     const [days, setDays] = useState([true, true, true, true, true, true, true])
-    const [name, setName] = useState("")
+    const [prevName,setPrevName]=useState(route.params.user)
+    const [name, setName] = useState(route.params.user||"")
     const [address, setAddress] = useState("")
     const [allergies, setAllergies] = useState("")
     const [car, setCar] = useState("")
@@ -21,6 +22,7 @@ const ProfileScreen = ({ navigation }) => {
 
     const handleClick = async (myObj) => {
         try {
+            
             const newObj={
                 name: myObj.name,
                 address: myObj.address,
@@ -29,10 +31,11 @@ const ProfileScreen = ({ navigation }) => {
                 allergies: myObj.allergies,
                 days: myObj.days
             }
-            console.log(newObj)
-            console.log(typeof newObj)
-            axios.post('https://airdnd-server.herokuapp.com/profile/add', {
+            //console.log(newObj)
+            //console.log(typeof newObj)
+            axios.put('https://airdnd-server.herokuapp.com/profile/update', {
                 "name": myObj.name,
+                "prevName":prevName,
                 "address": myObj.address,
                 "car": myObj.car,
                 "diet": myObj.diet,
@@ -237,7 +240,7 @@ const styles = StyleSheet.create({
     CheckBox: {
         width: screenDim.width / 2,
         flexDirection: "column",
-
+        marginBottom:0.5
     },
     checkBoxView: {
         //backgroundColor: "green",

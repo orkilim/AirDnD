@@ -4,7 +4,7 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import screenDim from './ScreenDimensions';
 
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation,route }) => {
 
     return (
         <View style={styles.view}>
@@ -12,7 +12,7 @@ const HomeScreen = ({ navigation }) => {
             <TouchableOpacity onPress={() => { navigation.navigate("Groups") }} style={styles.Button}>
                 <Text style={styles.ButtonText} >Groups</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate("Profile") }} style={styles.Button}>
+            <TouchableOpacity onPress={() => { navigation.navigate("Profile",{user:route.params.name,from:'login'}) }} style={styles.Button}>
                 <Text style={styles.ButtonText} >profile</Text>
             </TouchableOpacity>
         </View>

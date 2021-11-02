@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import screenDim from './ScreenDimensions';
 import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import axios from 'axios'
 
-const Signup=()=>{
+const Signup=({navigation})=>{
 
     const [name,setName]=useState("")
     const [password,setPassword]=useState("")
@@ -18,17 +19,18 @@ const Signup=()=>{
               //setToken(data.data);
               if (data.data) {
                 console.log("i have a token")
-                return navigation.navigate("Main Menu"/*, {
-                  name:name,
+                navigation.navigate("Profile", {
+                  user:name,
                   token: data.data,
                   from: 'Signup',
-                }*/);
+                });
               }
-              Alert.alert(data.data)
+              Alert.alert("Welcome to Sincon. add the info on yourself, then press save")
             })
             .catch((err)=>{
                 if(err){
-                    Alert.alert("ERROR!",err)
+                  console.log(err.response.data)
+                    Alert.alert("ERROR! "+err.response.data.msg)
                 }
                 
             })
@@ -44,10 +46,10 @@ const Signup=()=>{
             <TextInput placeholderTextColor="white" value={name} onChangeText={(text) => { setName(text) }} style={styles.Input} ></TextInput>
             <Text style={styles.Label}>Password:</Text>
             <TextInput placeholderTextColor="white" value={password} onChangeText={(text) => { setPassword(text) }} style={styles.Input} ></TextInput>
-            <TouchableOpacity style={styles.button}>
-                <Button title="Sign Up" onPress={() => {handleSubmit()}}>
+            <TouchableOpacity style={styles.button} onPress={() => {handleSubmit()}} >
+                <Text title="Sign Up" style={styles.text} >
                     Sign Up
-                </Button>
+                </Text>
             </TouchableOpacity>
         </View>
     )
@@ -91,5 +93,9 @@ const styles = StyleSheet.create({
       height:screenDim.height/10,
       alignItems:"center",
       justifyContent:"center"
-  }
+  },
+  text:{
+    color:"white",
+    fontFamily:"BlackmoonQuest-PKq5g"
+}
 });

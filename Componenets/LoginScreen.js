@@ -3,7 +3,7 @@ import screenDim from './ScreenDimensions';
 import axios from 'axios';
 import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-const LoginScreen=()=>{
+const LoginScreen=({navigation})=>{
 
     const [name,setName]=useState("")
     const [password,setPassword]=useState("")
@@ -16,20 +16,22 @@ const LoginScreen=()=>{
           })
             .then(data => {
               console.log(data.data)
-              setToken(data.data);
+              //setToken(data.data);
               if (data.data) {
                 console.log("i have a token")
-                return navigation.navigate("Main Menu", {
+                console.log(data.data)
+                navigation.navigate("Main Menu", {
                   name:name,
-                  token: token,
-                  from: 'Login',
+                  token: data.data,
+                  from: 'Login'
                 });
               }
-              Alert.alert(data.data)
+              Alert.alert("Welcome back to Sincon")
             })
             .catch((err)=>{
                 if(err){
-                    Alert.alert("ERROR!",err)
+                    Alert.alert("ERROR!",err.response.data)
+                    console.log("error in handleSubmit in login is: ",err.response.data.msg)
                 }
                 
             })
@@ -45,10 +47,10 @@ const LoginScreen=()=>{
             <TextInput placeholderTextColor="white" value={name} onChangeText={(text) => { setName(text) }} style={styles.Input} ></TextInput>
             <Text style={styles.Label}>Password:</Text>
             <TextInput placeholderTextColor="white" value={password} onChangeText={(text) => { setPassword(text) }} style={styles.Input} ></TextInput>
-            <TouchableOpacity style={styles.button}>
-                <Button title="Login" onPress={() => {handleSubmit()}}>
+            <TouchableOpacity style={styles.button} onPress={() => {handleSubmit()}} >
+                <Text title="Login" style={styles.text} >
                     Login
-                </Button>
+                </Text>
             </TouchableOpacity>
         </View>
     )
@@ -89,5 +91,9 @@ const styles = StyleSheet.create({
         height:screenDim.height/10,
         alignItems:"center",
         justifyContent:"center"
+    },
+    text:{
+        color:"white",
+        fontFamily:"BlackmoonQuest-PKq5g"
     }
 });

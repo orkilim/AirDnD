@@ -6,15 +6,16 @@ const LogOrSign = ({ navigation }) => {
 
     return (
         <View style={styles.view}>
-            <TouchableOpacity style={styles.button}>
-                <Button title="Login" onPress={() => { navigation.navigate("Login") }} >
+            <Text style={styles.title} >Welcome to Sincon</Text>
+            <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("Login") }} >
+                <Text title="Login" style={styles.text}  >
                     Login
-                </Button>
+                </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-                <Button title="Sign Up" onPress={() => { navigation.navigate("Signup") }}>
+            <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("Signup") }} >
+                <Text title="Sign Up" style={styles.text} >
                     Sign Up
-                </Button>
+                </Text>
             </TouchableOpacity>
         </View>
     )
@@ -42,5 +43,14 @@ const styles = StyleSheet.create({
         height:screenDim.height/10,
         alignItems:"center",
         justifyContent:"center"
+    },
+    text:{
+        color:"white",
+        fontFamily:"BlackmoonQuest-PKq5g"
+    },
+    title:{
+        color:"gold",
+        fontFamily:"BlackmoonQuest-PKq5g",
+        fontSize:30,
     }
 });
