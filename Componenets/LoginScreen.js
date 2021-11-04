@@ -3,7 +3,7 @@ import screenDim from './ScreenDimensions';
 import axios from 'axios';
 import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-const LoginScreen=({navigation})=>{
+const LoginScreen=({navigation,route})=>{
 
     const [name,setName]=useState("")
     const [password,setPassword]=useState("")
@@ -20,11 +20,7 @@ const LoginScreen=({navigation})=>{
               if (data.data) {
                 console.log("i have a token")
                 console.log(data.data)
-                navigation.navigate("Main Menu", {
-                  user:name,
-                  token: data.data,
-                  from: 'Login'
-                });
+                navigation.navigate("Main Menu", {user:name,token: data.data,from: 'Login'});
               }
               Alert.alert("Welcome back to Sincon")
             })

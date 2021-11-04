@@ -9,10 +9,10 @@ const HomeScreen = ({ navigation,route }) => {
     return (
         <View style={styles.view}>
             <Text style={styles.logo} >Sincon</Text>
-            <TouchableOpacity onPress={() => { console.log(route);navigation.navigate("Groups",{user:route.params.user,from:'login'}) }} style={styles.Button}>
+            <TouchableOpacity onPress={() => {console.log(route);navigation.navigate("Groups",{user:route.params.user,from:'Main Menu'}) }} style={styles.Button}>
                 <Text style={styles.ButtonText} >My Groups and Events</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate("Profile",{user:route.params.user,from:'login'}) }} style={styles.Button}>
+            <TouchableOpacity onPress={() => { navigation.navigate("Profile",{user:route.params.user,from:'Main Menu'}) }} style={styles.Button}>
                 <Text style={styles.ButtonText} >Profile</Text>
             </TouchableOpacity>
         </View>

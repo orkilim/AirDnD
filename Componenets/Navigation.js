@@ -26,7 +26,7 @@ const options = {
 const Navigation = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="LogOrSign">
+            <Stack.Navigator initialRouteName="Groups">
                 <Stack.Screen options={{ headerShown: false }} name="LogOrSign" component={LogOrSign} />
                 <Stack.Screen options={options} name="Signup" component={Signup} />
                 <Stack.Screen options={options} name="Login" component={LoginScreen} />

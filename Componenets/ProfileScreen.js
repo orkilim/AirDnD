@@ -43,8 +43,8 @@ const ProfileScreen = ({ route,navigation }) => {
                 "days": myObj.days
             })
             .then((data)=>{
-                console.log(data)
-                navigation.navigate("Main Menu")
+                //console.log(data)
+                navigation.navigate("Main Menu",{user:name})
             })
             .catch((err)=>{
                 if(err)
